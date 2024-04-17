@@ -33,6 +33,7 @@ export type trainingsGetType = [
 ];
 
 export type customerType = {
+  id: number;
   firstname: string;
   lastname: string;
   streetaddress: string;
@@ -44,6 +45,14 @@ export type customerType = {
 
 export type trainingsType = {
   date: Date;
+  duration: number;
+  activity: string;
+  customer: customerType;
+};
+
+export type getTrainingsWithCustomerInfoType = {
+  id: number;
+  date: string;
   duration: number;
   activity: string;
   customer: customerType;
