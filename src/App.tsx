@@ -1,8 +1,9 @@
 import { Box } from "@mui/material";
 import Header from "./Components/Layout/Header";
-import ListTrainings from "./Components/Training/ListTrainings";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CustomerPage from "./Components/Customer/CustomerPage";
+import TrainingPage from "./Components/Training/TrainingPage";
+
 const App = () => {
   return (
     <Box>
@@ -12,7 +13,7 @@ const App = () => {
           <Routes>
             <Route index element={<CustomerPage />} />
             <Route path="/customers" element={<CustomerPage />} />
-            <Route path="/trainings" element={<ListTrainings />} />{" "}
+            <Route path="/trainings" element={<TrainingPage />} />{" "}
           </Routes>
         </BrowserRouter>
       </Box>

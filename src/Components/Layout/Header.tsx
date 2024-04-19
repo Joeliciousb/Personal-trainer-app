@@ -5,9 +5,16 @@ const Header = () => {
     <Box>
       <AppBar position="static">
         <Toolbar sx={{ width: "100%" }}>
-          <Typography variant="h6">Personal trainer app</Typography>
+          <Typography variant="h6" sx={{ marginRight: 2 }}>
+            Personal trainer app
+          </Typography>
           <Box display="flex">
-            <Link href="/customers" color="inherit" underline="hover">
+            <Link
+              href="/customers"
+              color="inherit"
+              underline="hover"
+              sx={{ marginX: 2 }}
+            >
               <Typography>Customers</Typography>
             </Link>
             <Link href="/trainings" color="inherit" underline="hover">

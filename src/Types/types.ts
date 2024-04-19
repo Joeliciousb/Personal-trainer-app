@@ -10,30 +10,25 @@ export type linksType = {
   };
 };
 
-export type customerGetType = [
-  {
-    firstname: string;
-    lastname: string;
-    streetaddress: string;
-    postcode: string;
-    city: string;
-    email: string;
-    phone: string;
-    _links: linksType;
-  }
-];
+export type customerGetType = {
+  firstname: string;
+  lastname: string;
+  streetaddress: string;
+  postcode: string;
+  city: string;
+  email: string;
+  phone: string;
+  _links: linksType;
+};
 
-export type trainingsGetType = [
-  {
-    date: string;
-    duration: number;
-    activity: string;
-    _links: linksType;
-  }
-];
+export type trainingsGetType = {
+  date: string;
+  duration: number;
+  activity: string;
+  _links: linksType;
+};
 
 export type customerType = {
-  id: number;
   firstname: string;
   lastname: string;
   streetaddress: string;
