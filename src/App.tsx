@@ -3,6 +3,7 @@ import Header from "./Components/Layout/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CustomerPage from "./Components/Customer/CustomerPage";
 import TrainingPage from "./Components/Training/TrainingPage";
+import "./styles.css";
 
 const App = () => {
   return (

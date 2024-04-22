@@ -12,7 +12,7 @@ export const fetchCustomers = async () => {
   }
 };
 
-export const handleAddCustomer = async (customer: customerType) => {
+export const postCustomer = async (customer: customerType) => {
   try {
     const response = await fetch(
       "https://customerrestservice-personaltraining.rahtiapp.fi/api/customers",
@@ -28,7 +28,7 @@ export const handleAddCustomer = async (customer: customerType) => {
   }
 };
 
-export const handleDeleteCustomer = async (link: string) => {
+export const deleteCustomer = async (link: string) => {
   try {
     const response = await fetch(link, {
       method: "DELETE",
@@ -39,10 +39,7 @@ export const handleDeleteCustomer = async (link: string) => {
   }
 };
 
-export const handleEditCustomer = async (
-  link: string,
-  customer: customerGetType
-) => {
+export const editCustomer = async (link: string, customer: customerGetType) => {
   try {
     const response = await fetch(link, {
       method: "PUT",

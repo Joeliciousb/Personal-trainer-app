@@ -5,9 +5,9 @@ import React from "react";
 import AddCustomer from "./AddCustomer";
 import {
   fetchCustomers,
-  handleAddCustomer,
-  handleDeleteCustomer,
-  handleEditCustomer,
+  postCustomer,
+  deleteCustomer,
+  editCustomer,
 } from "../../api/customerApi";
 
 const CustomerPage = () => {
@@ -24,8 +24,8 @@ const CustomerPage = () => {
     setIsLoading(false);
   };
 
-  const addCustomer = async (customer: customerType) => {
-    const response = await handleAddCustomer(customer);
+  const handleAddCustomer = async (customer: customerType) => {
+    const response = await postCustomer(customer);
     if (response?.ok) {
       setSnackbarMsg("Customer was added successfully");
       setSnackbarIsOpen(true);
@@ -33,8 +33,8 @@ const CustomerPage = () => {
     }
   };
 
-  const deleteCustomer = async (link: string) => {
-    const response = await handleDeleteCustomer(link);
+  const handleDeleteCustomer = async (link: string) => {
+    const response = await deleteCustomer(link);
     if (response?.ok) {
       setSnackbarMsg("Customer was deleted successfully");
       setSnackbarIsOpen(true);
@@ -42,8 +42,11 @@ const CustomerPage = () => {
     }
   };
 
-  const editCustomer = async (link: string, customer: customerGetType) => {
-    const response = await handleEditCustomer(link, customer);
+  const handleEditCustomer = async (
+    link: string,
+    customer: customerGetType
+  ) => {
+    const response = await editCustomer(link, customer);
     if (response?.ok) {
       setSnackbarMsg("Customer was updated successfully");
       setSnackbarIsOpen(true);
@@ -61,7 +64,7 @@ const CustomerPage = () => {
         <Box>Loading skeleton</Box>
       ) : (
         <Box>
-          <AddCustomer handleAddCustomer={addCustomer} />
+          <AddCustomer handleAddCustomer={handleAddCustomer} />
           <Snackbar
             open={snackbarIsOpen}
             message={snackbarMsg}
@@ -70,8 +73,8 @@ const CustomerPage = () => {
           />
           <CustomerTable
             customerData={customerData}
-            handleDeleteCustomer={deleteCustomer}
-            editCustomer={editCustomer}
+            handleDeleteCustomer={handleDeleteCustomer}
+            handleEditCustomer={handleEditCustomer}
           />
         </Box>
       )}

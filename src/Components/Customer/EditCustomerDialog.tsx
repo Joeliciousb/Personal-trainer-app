@@ -6,11 +6,14 @@ import CustomerDialogContent from "./CustomerDialogContent";
 const EditCustomerDialog = ({
   customer,
   handleClose,
-  editCustomer,
+  handleEditCustomer,
 }: {
   customer: customerGetType;
   handleClose: () => void;
-  editCustomer: (link: string, customer: customerGetType) => Promise<void>;
+  handleEditCustomer: (
+    link: string,
+    customer: customerGetType
+  ) => Promise<void>;
 }) => {
   const [updatedCustomer, setUpdatedCustomer] =
     React.useState<customerGetType>(customer);
@@ -25,7 +28,7 @@ const EditCustomerDialog = ({
   };
 
   const handleSave = () => {
-    editCustomer(customer._links.self.href, updatedCustomer);
+    handleEditCustomer(customer._links.self.href, updatedCustomer);
     handleClose();
   };
 

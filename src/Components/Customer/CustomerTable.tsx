@@ -10,11 +10,14 @@ import EditCustomerDialog from "./EditCustomerDialog";
 const CustomerTable = ({
   customerData,
   handleDeleteCustomer,
-  editCustomer,
+  handleEditCustomer,
 }: {
   customerData: customerGetType[];
   handleDeleteCustomer: (link: string) => void;
-  editCustomer: (link: string, customer: customerGetType) => Promise<void>;
+  handleEditCustomer: (
+    link: string,
+    customer: customerGetType
+  ) => Promise<void>;
 }) => {
   const [selectedCustomer, setSelectedCustomer] =
     React.useState<customerGetType | null>(null);
@@ -51,7 +54,7 @@ const CustomerTable = ({
           onClick={() => {
             if (
               window.confirm(
-                `Are you sure you want to delete  ${params.data.firstname} ${params.data.lastname}?`
+                `Are you sure you want to delete ${params.data.firstname} ${params.data.lastname}?`
               )
             ) {
               handleDeleteCustomer(params.data._links.self.href);
@@ -69,7 +72,7 @@ const CustomerTable = ({
         <EditCustomerDialog
           customer={selectedCustomer}
           handleClose={() => setSelectedCustomer(null)}
-          editCustomer={editCustomer}
+          handleEditCustomer={handleEditCustomer}
         />
       )}
       <AgGridReact rowData={customerData} columnDefs={columnDefs}></AgGridReact>

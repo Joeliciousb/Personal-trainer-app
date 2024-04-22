@@ -10,7 +10,7 @@ const CustomerDialogContent = ({
 }) => {
   return (
     <>
-      <DialogContent>
+      <DialogContent sx={{ width: "320px" }}>
         <Stack spacing={2} mt={1}>
           <TextField
             label="firstname"

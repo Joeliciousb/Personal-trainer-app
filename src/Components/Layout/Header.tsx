@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <Box>
       <AppBar position="static">
-        <Toolbar sx={{ width: "100%" }}>
+        <Toolbar sx={{ width: "100%", height: "80px" }}>
           <Typography variant="h6" sx={{ marginRight: 2 }}>
             Personal trainer app
           </Typography>

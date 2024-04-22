@@ -1,5 +1,5 @@
-import { Box } from "@mui/material";
-import { AgGridReact } from "ag-grid-react";
+import { Box, Button } from "@mui/material";
+import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import { ColDef } from "ag-grid-community";
@@ -8,8 +8,10 @@ import dayjs from "dayjs";
 
 const TrainingTable = ({
   trainingsData,
+  handleDeleteTraining,
 }: {
   trainingsData: getTrainingsWithCustomerInfoType[];
+  handleDeleteTraining: (trainingId: number) => Promise<void>;
 }) => {
   const formatDate = (dateString: string) => {
     return dayjs(dateString).format("DD.MM.YYYY HH:mm");
@@ -22,6 +24,30 @@ const TrainingTable = ({
     {
       headerName: "Customer",
       valueGetter: (params) => params.data.customer.firstname,
+    },
+    {
+      field: "delete",
+      width: 100,
+      cellRenderer: (params: CustomCellRendererProps) => (
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          onClick={() => {
+            if (
+              window.confirm(
+                `Are you sure you want to delete ${
+                  params.data.activity
+                } on ${formatDate(params.data.date)}?`
+              )
+            ) {
+              handleDeleteTraining(params.data.id);
+            }
+          }}
+        >
+          Delete
+        </Button>
+      ),
     },
   ];
 
