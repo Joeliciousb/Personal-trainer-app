@@ -3,14 +3,14 @@ import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import { ColDef } from "ag-grid-community";
-import { getTrainingsWithCustomerInfoType } from "../../Types/types";
+import { getTrainingWithCustomerInfoType } from "../../Types/types";
 import dayjs from "dayjs";
 
 const TrainingTable = ({
   trainingsData,
   handleDeleteTraining,
 }: {
-  trainingsData: getTrainingsWithCustomerInfoType[];
+  trainingsData: getTrainingWithCustomerInfoType[];
   handleDeleteTraining: (trainingId: number) => Promise<void>;
 }) => {
   const formatDate = (dateString: string) => {

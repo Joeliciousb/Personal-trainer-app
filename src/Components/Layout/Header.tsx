@@ -13,12 +13,20 @@ const Header = () => {
               href="/customers"
               color="inherit"
               underline="hover"
-              sx={{ marginX: 2 }}
+              sx={{ marginRight: 2 }}
             >
               <Typography>Customers</Typography>
             </Link>
-            <Link href="/trainings" color="inherit" underline="hover">
+            <Link
+              href="/trainings"
+              color="inherit"
+              underline="hover"
+              sx={{ marginRight: 2 }}
+            >
               <Typography>Trainings</Typography>
+            </Link>
+            <Link href="/calendar" color="inherit" underline="hover">
+              <Typography>Calendar</Typography>
             </Link>
           </Box>
         </Toolbar>

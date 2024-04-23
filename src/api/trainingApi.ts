@@ -1,3 +1,5 @@
+import { trainingPostType } from "../Types/types";
+
 export const fetchTrainings = async () => {
   try {
     const response = await fetch(
@@ -16,6 +18,22 @@ export const deleteTraining = async (trainingId: number) => {
       `https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings/${trainingId}`,
       {
         method: "DELETE",
+      }
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const postTraining = async (training: trainingPostType) => {
+  try {
+    const response = await fetch(
+      "https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings",
+      {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(training),
       }
     );
     return response;

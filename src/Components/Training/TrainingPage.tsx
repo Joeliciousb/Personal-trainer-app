@@ -1,15 +1,23 @@
 import { Box, Snackbar } from "@mui/material";
 import React from "react";
-import { getTrainingsWithCustomerInfoType } from "../../Types/types";
+import {
+  getTrainingWithCustomerInfoType,
+  trainingType,
+} from "../../Types/types";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import TrainingTable from "./TrainingTable";
-import { deleteTraining, fetchTrainings } from "../../api/trainingApi";
+import {
+  deleteTraining,
+  fetchTrainings,
+  postTraining,
+} from "../../api/trainingApi";
 import AddTraining from "./AddTraining";
+import dayjs from "dayjs";
 
 const TrainingPage = () => {
   const [trainingsData, setTrainingsData] = React.useState<
-    getTrainingsWithCustomerInfoType[]
+    getTrainingWithCustomerInfoType[]
   >([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -35,6 +43,22 @@ const TrainingPage = () => {
     }
   };
 
+  const handleAddTraining = async (training: trainingType) => {
+    const formattedTraining = {
+      ...training,
+      date: dayjs(training.date).toISOString(),
+    };
+    const response = await postTraining(formattedTraining);
+    if (response?.ok) {
+      setSnackbarMsg("Training added successfully");
+      setSnackbarIsOpen(true);
+      handleFetchTrainings();
+    } else {
+      setSnackbarMsg("An error occured");
+      setSnackbarIsOpen(true);
+    }
+  };
+
   React.useEffect(() => {
     handleFetchTrainings();
   }, []);
@@ -45,7 +69,7 @@ const TrainingPage = () => {
         <Box>Loading Trainings Skeleton</Box>
       ) : (
         <Box>
-          <AddTraining />
+          <AddTraining handleAddTraining={handleAddTraining} />
           <Snackbar
             open={snackbarIsOpen}
             message={snackbarMsg}
