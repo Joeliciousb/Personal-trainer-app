@@ -1,5 +1,5 @@
 import React from "react";
-import { customerGetType } from "../../Types/types";
+import { CustomerGetType } from "../../Types/types";
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import CustomerDialogContent from "./CustomerDialogContent";
 
@@ -8,15 +8,15 @@ const EditCustomerDialog = ({
   handleClose,
   handleEditCustomer,
 }: {
-  customer: customerGetType;
+  customer: CustomerGetType;
   handleClose: () => void;
   handleEditCustomer: (
     link: string,
-    customer: customerGetType
+    customer: CustomerGetType
   ) => Promise<void>;
 }) => {
   const [updatedCustomer, setUpdatedCustomer] =
-    React.useState<customerGetType>(customer);
+    React.useState<CustomerGetType>(customer);
 
   const handleTextFieldChange = (
     event: React.ChangeEvent<HTMLInputElement>

@@ -1,4 +1,4 @@
-import { trainingPostType } from "../Types/types";
+import { TrainingPostType } from "../Types/types";
 
 export const fetchTrainings = async () => {
   try {
@@ -26,7 +26,7 @@ export const deleteTraining = async (trainingId: number) => {
   }
 };
 
-export const postTraining = async (training: trainingPostType) => {
+export const postTraining = async (training: TrainingPostType) => {
   try {
     const response = await fetch(
       "https://customerrestservice-personaltraining.rahtiapp.fi/api/trainings",

@@ -1,4 +1,4 @@
-import { customerGetType, customerType } from "../Types/types";
+import { CustomerGetType, CustomerType } from "../Types/types";
 
 export const fetchCustomers = async () => {
   try {
@@ -12,7 +12,7 @@ export const fetchCustomers = async () => {
   }
 };
 
-export const postCustomer = async (customer: customerType) => {
+export const postCustomer = async (customer: CustomerType) => {
   try {
     const response = await fetch(
       "https://customerrestservice-personaltraining.rahtiapp.fi/api/customers",
@@ -39,7 +39,7 @@ export const deleteCustomer = async (link: string) => {
   }
 };
 
-export const editCustomer = async (link: string, customer: customerGetType) => {
+export const editCustomer = async (link: string, customer: CustomerGetType) => {
   try {
     const response = await fetch(link, {
       method: "PUT",

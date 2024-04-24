@@ -25,8 +25,16 @@ const Header = () => {
             >
               <Typography>Trainings</Typography>
             </Link>
-            <Link href="/calendar" color="inherit" underline="hover">
+            <Link
+              href="/calendar"
+              color="inherit"
+              underline="hover"
+              sx={{ marginRight: 2 }}
+            >
               <Typography>Calendar</Typography>
+            </Link>
+            <Link href="/reports" color="inherit" underline="hover">
+              <Typography>Reports</Typography>
             </Link>
           </Box>
         </Toolbar>

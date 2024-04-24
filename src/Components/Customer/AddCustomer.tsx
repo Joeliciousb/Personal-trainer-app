@@ -1,17 +1,17 @@
 import { Box, Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import React from "react";
-import { customerType } from "../../Types/types";
+import { CustomerType } from "../../Types/types";
 import CustomerDialogContent from "./CustomerDialogContent";
 
 const AddCustomer = ({
   handleAddCustomer,
 }: {
-  handleAddCustomer: (customer: customerType) => Promise<void>;
+  handleAddCustomer: (customer: CustomerType) => Promise<void>;
 }) => {
   const [addCustomerDialogIsOpen, setAddCustomerDialogIsOpen] =
     React.useState<boolean>(false);
 
-  const [newCustomer, setNewCustomer] = React.useState<customerType>({
+  const [newCustomer, setNewCustomer] = React.useState<CustomerType>({
     firstname: "",
     lastname: "",
     streetaddress: "",

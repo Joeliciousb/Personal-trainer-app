@@ -1,26 +1,27 @@
 import { Box, Button } from "@mui/material";
-import { customerGetType } from "../../Types/types";
+import { CustomerGetType } from "../../Types/types";
 import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import { ColDef } from "ag-grid-community";
 import React from "react";
 import EditCustomerDialog from "./EditCustomerDialog";
+import { CSVLink } from "react-csv";
 
 const CustomerTable = ({
   customerData,
   handleDeleteCustomer,
   handleEditCustomer,
 }: {
-  customerData: customerGetType[];
+  customerData: CustomerGetType[];
   handleDeleteCustomer: (link: string) => void;
   handleEditCustomer: (
     link: string,
-    customer: customerGetType
+    customer: CustomerGetType
   ) => Promise<void>;
 }) => {
   const [selectedCustomer, setSelectedCustomer] =
-    React.useState<customerGetType | null>(null);
+    React.useState<CustomerGetType | null>(null);
 
   const columnDefs: ColDef[] = [
     { field: "firstname", width: 150 },
@@ -66,8 +67,22 @@ const CustomerTable = ({
       ),
     },
   ];
+
+  const csvData = customerData.map((customer) => ({
+    firstname: customer.firstname,
+    lastname: customer.lastname,
+    streetaddress: customer.streetaddress,
+    postcode: customer.postcode,
+    city: customer.city,
+    email: customer.email,
+    phone: customer.phone,
+  }));
+
   return (
-    <Box className="ag-theme-material" style={{ width: "100%", height: 500 }}>
+    <Box
+      className="ag-theme-material"
+      sx={{ width: "100%", height: 500, marginTop: 2 }}
+    >
       {selectedCustomer && (
         <EditCustomerDialog
           customer={selectedCustomer}
@@ -75,6 +90,11 @@ const CustomerTable = ({
           handleEditCustomer={handleEditCustomer}
         />
       )}
+      <CSVLink data={csvData} filename={"customers.csv"}>
+        <Button variant="outlined" color="info">
+          Export to CSV
+        </Button>
+      </CSVLink>
       <AgGridReact rowData={customerData} columnDefs={columnDefs}></AgGridReact>
     </Box>
   );

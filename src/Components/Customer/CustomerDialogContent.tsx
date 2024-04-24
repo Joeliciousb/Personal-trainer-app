@@ -1,11 +1,11 @@
 import { DialogContent, Stack, TextField } from "@mui/material";
-import { customerType } from "../../Types/types";
+import { CustomerType } from "../../Types/types";
 
 const CustomerDialogContent = ({
   customer,
   handleTextFieldChange,
 }: {
-  customer: customerType;
+  customer: CustomerType;
   handleTextFieldChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
   return (

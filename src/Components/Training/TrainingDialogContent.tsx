@@ -1,5 +1,5 @@
 import { Autocomplete, DialogContent, Stack, TextField } from "@mui/material";
-import { customerGetType, trainingType } from "../../Types/types";
+import { CustomerGetType, TrainingType } from "../../Types/types";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
@@ -8,9 +8,9 @@ const TrainingDialogContent = ({
   training,
   setTraining,
 }: {
-  customers: customerGetType[];
-  training: trainingType;
-  setTraining: React.Dispatch<React.SetStateAction<trainingType>>;
+  customers: CustomerGetType[];
+  training: TrainingType;
+  setTraining: React.Dispatch<React.SetStateAction<TrainingType>>;
 }) => {
   const handleTextFieldChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -18,7 +18,7 @@ const TrainingDialogContent = ({
     setTraining({ ...training, [event.target.name]: event.target.value });
   };
 
-  const handleAutocompleteChange = (value: customerGetType | null) => {
+  const handleAutocompleteChange = (value: CustomerGetType | null) => {
     if (value !== null) {
       setTraining({ ...training, customer: value._links.self.href });
     }
@@ -36,13 +36,13 @@ const TrainingDialogContent = ({
             />
           </LocalizationProvider>
           <TextField
-            label="duration"
+            label="Duration"
             name="duration"
             onChange={handleTextFieldChange}
             value={training.duration}
           />
           <TextField
-            label="activity"
+            label="Activity"
             name="activity"
             onChange={handleTextFieldChange}
             value={training.activity}

@@ -3,14 +3,15 @@ import { AgGridReact, CustomCellRendererProps } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
 import { ColDef } from "ag-grid-community";
-import { getTrainingWithCustomerInfoType } from "../../Types/types";
+import { GetTrainingWithCustomerInfoType } from "../../Types/types";
 import dayjs from "dayjs";
+import { CSVLink } from "react-csv";
 
 const TrainingTable = ({
   trainingsData,
   handleDeleteTraining,
 }: {
-  trainingsData: getTrainingWithCustomerInfoType[];
+  trainingsData: GetTrainingWithCustomerInfoType[];
   handleDeleteTraining: (trainingId: number) => Promise<void>;
 }) => {
   const formatDate = (dateString: string) => {
@@ -51,12 +52,23 @@ const TrainingTable = ({
     },
   ];
 
+  const csvData = trainingsData.map((training) => ({
+    date: formatDate(training.date),
+    activity: training.activity,
+    duration: training.duration,
+    customer: training.customer.firstname,
+  }));
+
   return (
-    <Box className="ag-theme-material" style={{ width: "100%", height: 500 }}>
-      <AgGridReact
-        rowData={trainingsData}
-        columnDefs={columnDefs}
-      ></AgGridReact>
+    <Box sx={{ marginTop: 2 }}>
+      <CSVLink data={csvData} filename={"trainings.csv"}>
+        <Button variant="outlined" color="info">
+          Export to CSV
+        </Button>
+      </CSVLink>
+      <div className="ag-theme-material" style={{ width: "100%", height: 500 }}>
+        <AgGridReact rowData={trainingsData} columnDefs={columnDefs} />
+      </div>
     </Box>
   );
 };

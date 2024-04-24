@@ -1,8 +1,8 @@
 import { Box, Snackbar } from "@mui/material";
 import React from "react";
 import {
-  getTrainingWithCustomerInfoType,
-  trainingType,
+  GetTrainingWithCustomerInfoType,
+  TrainingType,
 } from "../../Types/types";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
@@ -17,7 +17,7 @@ import dayjs from "dayjs";
 
 const TrainingPage = () => {
   const [trainingsData, setTrainingsData] = React.useState<
-    getTrainingWithCustomerInfoType[]
+    GetTrainingWithCustomerInfoType[]
   >([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -43,7 +43,7 @@ const TrainingPage = () => {
     }
   };
 
-  const handleAddTraining = async (training: trainingType) => {
+  const handleAddTraining = async (training: TrainingType) => {
     const formattedTraining = {
       ...training,
       date: dayjs(training.date).toISOString(),

@@ -1,6 +1,6 @@
 import { Box, Snackbar } from "@mui/material";
 import CustomerTable from "./CustomerTable";
-import { customerGetType, customerType } from "../../Types/types";
+import { CustomerGetType, CustomerType } from "../../Types/types";
 import React from "react";
 import AddCustomer from "./AddCustomer";
 import {
@@ -11,7 +11,7 @@ import {
 } from "../../api/customerApi";
 
 const CustomerPage = () => {
-  const [customerData, setCustomerData] = React.useState<customerGetType[]>([]);
+  const [customerData, setCustomerData] = React.useState<CustomerGetType[]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const [snackbarIsOpen, setSnackbarIsOpen] = React.useState<boolean>(false);
@@ -24,7 +24,7 @@ const CustomerPage = () => {
     setIsLoading(false);
   };
 
-  const handleAddCustomer = async (customer: customerType) => {
+  const handleAddCustomer = async (customer: CustomerType) => {
     const response = await postCustomer(customer);
     if (response?.ok) {
       setSnackbarMsg("Customer was added successfully");
@@ -44,7 +44,7 @@ const CustomerPage = () => {
 
   const handleEditCustomer = async (
     link: string,
-    customer: customerGetType
+    customer: CustomerGetType
   ) => {
     const response = await editCustomer(link, customer);
     if (response?.ok) {

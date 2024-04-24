@@ -1,6 +1,6 @@
 import { Dayjs } from "dayjs";
 
-export type linkType = {
+export type LinkType = {
   self: {
     href: string;
   };
@@ -12,7 +12,7 @@ export type linkType = {
   };
 };
 
-export type customerGetType = {
+export type CustomerGetType = {
   firstname: string;
   lastname: string;
   streetaddress: string;
@@ -20,17 +20,17 @@ export type customerGetType = {
   city: string;
   email: string;
   phone: string;
-  _links: linkType;
+  _links: LinkType;
 };
 
-export type trainingGetType = {
+export type TrainingGetType = {
   date: string;
   duration: number;
   activity: string;
-  _links: linkType;
+  _links: LinkType;
 };
 
-export type customerType = {
+export type CustomerType = {
   firstname: string;
   lastname: string;
   streetaddress: string;
@@ -40,24 +40,24 @@ export type customerType = {
   phone: string;
 };
 
-export type trainingType = {
+export type TrainingType = {
   date: Dayjs | null;
   duration: string;
   activity: string;
   customer: string;
 };
 
-export type trainingPostType = {
+export type TrainingPostType = {
   date: string;
   duration: string;
   activity: string;
   customer: string;
 };
 
-export type getTrainingWithCustomerInfoType = {
+export type GetTrainingWithCustomerInfoType = {
   id: number;
   date: string;
   duration: number;
   activity: string;
-  customer: customerType;
+  customer: CustomerType;
 };

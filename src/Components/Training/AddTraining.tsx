@@ -1,14 +1,14 @@
 import { Box, Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import { fetchCustomers } from "../../api/customerApi";
 import React from "react";
-import { customerGetType, trainingType } from "../../Types/types";
+import { CustomerGetType, TrainingType } from "../../Types/types";
 import TrainingDialogContent from "./TrainingDialogContent";
 import dayjs from "dayjs";
 
 const AddTraining = ({
   handleAddTraining,
 }: {
-  handleAddTraining: (training: trainingType) => void;
+  handleAddTraining: (training: TrainingType) => void;
 }) => {
   const createNewTraining = () => {
     return {
@@ -19,8 +19,8 @@ const AddTraining = ({
     };
   };
 
-  const [customerData, setCustomerData] = React.useState<customerGetType[]>();
-  const [newTraining, setNewTraining] = React.useState<trainingType>(
+  const [customerData, setCustomerData] = React.useState<CustomerGetType[]>();
+  const [newTraining, setNewTraining] = React.useState<TrainingType>(
     createNewTraining()
   );
   const [addTrainingDialogIsOpen, setAddTrainingDialogIsOpen] =
