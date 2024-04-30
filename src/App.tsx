@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Box>
       <Header />
-      <BrowserRouter>
+      <BrowserRouter basename={window.location.pathname}>
         <Routes>
           <Route index element={<CustomerPage />} />
           <Route path="/customers" element={<CustomerPage />} />
