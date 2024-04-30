@@ -10,7 +10,7 @@ const Header = () => {
           </Typography>
           <Box display="flex">
             <Link
-              href="/customers"
+              href="/Personal-trainer-app/customers"
               color="inherit"
               underline="hover"
               sx={{ marginRight: 2 }}
@@ -18,7 +18,7 @@ const Header = () => {
               <Typography>Customers</Typography>
             </Link>
             <Link
-              href="/trainings"
+              href="/Personal-trainer-app/trainings"
               color="inherit"
               underline="hover"
               sx={{ marginRight: 2 }}
