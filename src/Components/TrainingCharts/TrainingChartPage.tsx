@@ -62,11 +62,9 @@ const TrainingChartPage = () => {
         <TrainingChartSkeleton />
       ) : (
         <Box sx={{ mt: 2 }}>
-          <Typography variant="h6" sx={{ mb: 1 }}>
-            Training reports
-          </Typography>
+          <Typography sx={{ mb: 1 }}>Training reports</Typography>
           <Typography sx={{ mb: 4 }}>
-            Total duration of specific trainings represented in bars
+            Total duration of trainings represented in a barchart
           </Typography>
           <BarChart width={800} height={400} data={barChartData}>
             <XAxis dataKey={"activity"} />

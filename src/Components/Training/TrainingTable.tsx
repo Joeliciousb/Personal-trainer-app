@@ -19,9 +19,13 @@ const TrainingTable = ({
   };
 
   const columnDefs: ColDef[] = [
-    { field: "date", valueGetter: (params) => formatDate(params.data.date) },
-    { field: "activity" },
-    { field: "duration" },
+    {
+      field: "date",
+      valueGetter: (params) => formatDate(params.data.date),
+      filter: true,
+    },
+    { field: "activity", filter: true },
+    { field: "duration", filter: true },
     {
       headerName: "Customer",
       valueGetter: (params) => params.data.customer.firstname,

@@ -24,13 +24,13 @@ const CustomerTable = ({
     React.useState<CustomerGetType | null>(null);
 
   const columnDefs: ColDef[] = [
-    { field: "firstname", width: 150 },
-    { field: "lastname", width: 150 },
-    { field: "streetaddress", width: 175 },
-    { field: "postcode", width: 150 },
-    { field: "city", width: 150 },
-    { field: "email", width: 175 },
-    { field: "phone", width: 150 },
+    { field: "firstname", width: 150, filter: true },
+    { field: "lastname", width: 150, filter: true },
+    { field: "streetaddress", width: 175, filter: true },
+    { field: "postcode", width: 150, filter: true },
+    { field: "city", width: 150, filter: true },
+    { field: "email", width: 175, filter: true },
+    { field: "phone", width: 150, filter: true },
     {
       field: "edit",
       width: 125,

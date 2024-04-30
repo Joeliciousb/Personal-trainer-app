@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import dayjs from "dayjs";
@@ -38,7 +38,7 @@ const CalendarPage = () => {
   return (
     <BodyLayout>
       {isLoading ? (
-        <>Loading skeleton</>
+        <Skeleton variant="rectangular" width={1090} height={650} />
       ) : (
         <Box sx={{ height: 650, width: "75%" }}>
           <Calendar

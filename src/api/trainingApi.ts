@@ -9,6 +9,7 @@ export const fetchTrainings = async () => {
     return data;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -23,6 +24,7 @@ export const deleteTraining = async (trainingId: number) => {
     return response;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
@@ -39,5 +41,6 @@ export const postTraining = async (training: TrainingPostType) => {
     return response;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };

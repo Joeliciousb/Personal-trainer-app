@@ -19,7 +19,7 @@ const CustomerPage = () => {
   const [snackbarIsOpen, setSnackbarIsOpen] = React.useState<boolean>(false);
   const [snackbarMsg, setSnackbarMsg] = React.useState<string>("");
 
-  const getCustomers = async () => {
+  const handleFetchCustomers = async () => {
     setIsLoading(true);
     const data = await fetchCustomers();
     setCustomerData(data._embedded.customers);
@@ -31,7 +31,7 @@ const CustomerPage = () => {
     if (response?.ok) {
       setSnackbarMsg("Customer was added successfully");
       setSnackbarIsOpen(true);
-      getCustomers();
+      handleFetchCustomers();
     }
   };
 
@@ -40,7 +40,7 @@ const CustomerPage = () => {
     if (response?.ok) {
       setSnackbarMsg("Customer was deleted successfully");
       setSnackbarIsOpen(true);
-      getCustomers();
+      handleFetchCustomers();
     }
   };
 
@@ -52,12 +52,12 @@ const CustomerPage = () => {
     if (response?.ok) {
       setSnackbarMsg("Customer was updated successfully");
       setSnackbarIsOpen(true);
-      getCustomers();
+      handleFetchCustomers();
     }
   };
 
   React.useEffect(() => {
-    getCustomers();
+    handleFetchCustomers();
   }, []);
 
   return (
