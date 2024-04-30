@@ -78,7 +78,7 @@ const TrainingChartPage = () => {
             <Tooltip />
             <Bar dataKey="duration">
               {barChartData?.map((_data, index) => (
-                <Cell fill={colors[index % 10]} />
+                <Cell key={index} fill={colors[index % 10]} />
               ))}
             </Bar>
           </BarChart>

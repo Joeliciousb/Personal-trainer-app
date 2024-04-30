@@ -67,7 +67,7 @@ const TrainingPage = () => {
 
   return (
     <BodyLayout>
-      {isLoading ? (
+      {isLoading || !trainingsData ? (
         <TrainingPageSkeleton />
       ) : (
         <Box sx={{ width: "62%" }}>
