@@ -1,8 +1,10 @@
-import { Box } from "@mui/material";
-import { ResponsiveContainer, XAxis, YAxis, BarChart, Bar } from "recharts";
+import { Box, Typography } from "@mui/material";
+import { XAxis, YAxis, BarChart, Bar, Cell, Tooltip } from "recharts";
 import { TrainingGetType } from "../../Types/types";
 import React from "react";
 import { fetchTrainings } from "../../api/trainingApi";
+import BodyLayout from "../Layout/BodyLayout";
+import TrainingChartSkeleton from "./TrainingChartSkeleton";
 
 const TrainingChartPage = () => {
   type ActivityDurations = { [activity: string]: number };
@@ -13,6 +15,19 @@ const TrainingChartPage = () => {
   };
   const [barChartData, setBarChartData] = React.useState<TrainingChartData[]>();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  const colors = [
+    "#FF8C00", // Dark Orange
+    "#FF1493", // Deep Pink
+    "#32CD32", // Lime Green
+    "#4169E1", // Royal Blue
+    "#9370DB", // Medium Purple
+    "#FFD700", // Gold
+    "#20B2AA", // Light Sea Green
+    "#FF69B4", // Hot Pink
+    "#4682B4", // Steel Blue
+    "#8A2BE2", // Blue Violet
+  ];
 
   React.useEffect(() => {
     const handleGetTrainings = async () => {
@@ -42,21 +57,36 @@ const TrainingChartPage = () => {
   }, []);
 
   return (
-    <Box sx={{ py: 2, px: 1 }}>
+    <BodyLayout>
       {isLoading ? (
-        <Box>Skeleton</Box>
+        <TrainingChartSkeleton />
       ) : (
-        <ResponsiveContainer height="100%" width="100%">
-          <Box>
-            <BarChart width={500} height={300} data={barChartData}>
-              <XAxis dataKey={"activity"} />
-              <YAxis dataKey={"duration"} />
-              <Bar dataKey="duration" fill="#8884d8" />
-            </BarChart>
-          </Box>
-        </ResponsiveContainer>
+        <Box sx={{ mt: 2 }}>
+          <Typography variant="h6" sx={{ mb: 1 }}>
+            Training reports
+          </Typography>
+          <Typography sx={{ mb: 4 }}>
+            Total duration of specific trainings represented in bars
+          </Typography>
+          <BarChart width={800} height={400} data={barChartData}>
+            <XAxis dataKey={"activity"} />
+            <YAxis
+              label={{
+                value: "Duration (minutes)",
+                angle: -90,
+                position: "insideLeft",
+              }}
+            />
+            <Tooltip />
+            <Bar dataKey="duration">
+              {barChartData?.map((_data, index) => (
+                <Cell fill={colors[index % 10]} />
+              ))}
+            </Bar>
+          </BarChart>
+        </Box>
       )}
-    </Box>
+    </BodyLayout>
   );
 };
 

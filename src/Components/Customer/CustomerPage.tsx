@@ -9,6 +9,8 @@ import {
   deleteCustomer,
   editCustomer,
 } from "../../api/customerApi";
+import BodyLayout from "../Layout/BodyLayout";
+import CustomerPageSkeleton from "./CustomerPageSkeleton";
 
 const CustomerPage = () => {
   const [customerData, setCustomerData] = React.useState<CustomerGetType[]>([]);
@@ -59,11 +61,11 @@ const CustomerPage = () => {
   }, []);
 
   return (
-    <Box sx={{ py: 2, px: 1 }}>
+    <BodyLayout>
       {isLoading ? (
-        <Box>Loading skeleton</Box>
+        <CustomerPageSkeleton />
       ) : (
-        <Box>
+        <Box sx={{ width: "92%" }}>
           <AddCustomer handleAddCustomer={handleAddCustomer} />
           <Snackbar
             open={snackbarIsOpen}
@@ -78,7 +80,7 @@ const CustomerPage = () => {
           />
         </Box>
       )}
-    </Box>
+    </BodyLayout>
   );
 };
 

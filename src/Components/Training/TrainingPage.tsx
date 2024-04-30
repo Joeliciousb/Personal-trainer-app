@@ -14,6 +14,8 @@ import {
 } from "../../api/trainingApi";
 import AddTraining from "./AddTraining";
 import dayjs from "dayjs";
+import BodyLayout from "../Layout/BodyLayout";
+import TrainingPageSkeleton from "./TrainingPageSkeleton";
 
 const TrainingPage = () => {
   const [trainingsData, setTrainingsData] = React.useState<
@@ -64,11 +66,11 @@ const TrainingPage = () => {
   }, []);
 
   return (
-    <Box sx={{ py: 2, px: 1 }}>
+    <BodyLayout>
       {isLoading ? (
-        <Box>Loading Trainings Skeleton</Box>
+        <TrainingPageSkeleton />
       ) : (
-        <Box>
+        <Box sx={{ width: "62%" }}>
           <AddTraining handleAddTraining={handleAddTraining} />
           <Snackbar
             open={snackbarIsOpen}
@@ -82,7 +84,7 @@ const TrainingPage = () => {
           />
         </Box>
       )}
-    </Box>
+    </BodyLayout>
   );
 };
 

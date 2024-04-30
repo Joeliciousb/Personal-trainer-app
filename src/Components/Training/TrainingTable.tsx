@@ -66,9 +66,9 @@ const TrainingTable = ({
           Export to CSV
         </Button>
       </CSVLink>
-      <div className="ag-theme-material" style={{ width: "100%", height: 500 }}>
+      <Box className="ag-theme-material" style={{ width: "100%", height: 500 }}>
         <AgGridReact rowData={trainingsData} columnDefs={columnDefs} />
-      </div>
+      </Box>
     </Box>
   );
 };
