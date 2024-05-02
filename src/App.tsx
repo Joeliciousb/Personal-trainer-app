@@ -13,23 +13,11 @@ const App = () => {
       <Header />
       <BrowserRouter>
         <Routes>
-          <Route path="/Personal-trainer-app/" element={<CustomerPage />} />
-          <Route
-            path="/Personal-trainer-app/customers"
-            element={<CustomerPage />}
-          />
-          <Route
-            path="/Personal-trainer-app/trainings"
-            element={<TrainingPage />}
-          />
-          <Route
-            path="/Personal-trainer-app/calendar"
-            element={<CalendarPage />}
-          />
-          <Route
-            path="/Personal-trainer-app/reports"
-            element={<TrainingChartPage />}
-          />
+          <Route path="/" element={<CustomerPage />} />
+          <Route path="/customers" element={<CustomerPage />} />
+          <Route path="/trainings" element={<TrainingPage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/reports" element={<TrainingChartPage />} />
         </Routes>
       </BrowserRouter>
     </Box>

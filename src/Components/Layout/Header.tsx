@@ -10,7 +10,7 @@ const Header = () => {
           </Typography>
           <Box display="flex">
             <Link
-              href="/Personal-trainer-app/customers"
+              href="/customers"
               color="inherit"
               underline="hover"
               sx={{ marginRight: 2 }}
@@ -18,7 +18,7 @@ const Header = () => {
               <Typography>Customers</Typography>
             </Link>
             <Link
-              href="/Personal-trainer-app/trainings"
+              href="/trainings"
               color="inherit"
               underline="hover"
               sx={{ marginRight: 2 }}
@@ -26,18 +26,14 @@ const Header = () => {
               <Typography>Trainings</Typography>
             </Link>
             <Link
-              href="/Personal-trainer-app/calendar"
+              href="/calendar"
               color="inherit"
               underline="hover"
               sx={{ marginRight: 2 }}
             >
               <Typography>Calendar</Typography>
             </Link>
-            <Link
-              href="/Personal-trainer-app/reports"
-              color="inherit"
-              underline="hover"
-            >
+            <Link href="/reports" color="inherit" underline="hover">
               <Typography>Reports</Typography>
             </Link>
           </Box>
