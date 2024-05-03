@@ -1,4 +1,5 @@
-import { AppBar, Box, Link, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,30 +11,39 @@ const Header = () => {
           </Typography>
           <Box display="flex">
             <Link
-              href="/customers"
-              color="inherit"
-              underline="hover"
-              sx={{ marginRight: 2 }}
+              to="/customers"
+              style={{
+                marginRight: "12px",
+                textDecoration: "none",
+                color: "inherit",
+              }}
             >
               <Typography>Customers</Typography>
             </Link>
             <Link
-              href="/trainings"
-              color="inherit"
-              underline="hover"
-              sx={{ marginRight: 2 }}
+              to="/trainings"
+              style={{
+                marginRight: "12px",
+                textDecoration: "none",
+                color: "inherit",
+              }}
             >
               <Typography>Trainings</Typography>
             </Link>
             <Link
-              href="/calendar"
-              color="inherit"
-              underline="hover"
-              sx={{ marginRight: 2 }}
+              to="/calendar"
+              style={{
+                marginRight: "12px",
+                textDecoration: "none",
+                color: "inherit",
+              }}
             >
               <Typography>Calendar</Typography>
             </Link>
-            <Link href="/reports" color="inherit" underline="hover">
+            <Link
+              to="/reports"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
               <Typography>Reports</Typography>
             </Link>
           </Box>
