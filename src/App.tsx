@@ -11,7 +11,6 @@ const App = () => {
   return (
     <Box>
       <Header />
-
       <Routes>
         <Route index element={<CustomerPage />} />
         <Route path="/customers" element={<CustomerPage />} />
