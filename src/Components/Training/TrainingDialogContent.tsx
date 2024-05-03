@@ -1,7 +1,10 @@
 import { Autocomplete, DialogContent, Stack, TextField } from "@mui/material";
 import { CustomerGetType, TrainingType } from "../../Types/types";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { DateTimePicker } from "@mui/x-date-pickers";
+import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Dayjs } from "dayjs";
+import { Dispatch, SetStateAction, ChangeEvent } from "react";
 
 const TrainingDialogContent = ({
   customers,
@@ -10,11 +13,9 @@ const TrainingDialogContent = ({
 }: {
   customers: CustomerGetType[];
   training: TrainingType;
-  setTraining: React.Dispatch<React.SetStateAction<TrainingType>>;
+  setTraining: Dispatch<SetStateAction<TrainingType>>;
 }) => {
-  const handleTextFieldChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleTextFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTraining({ ...training, [event.target.name]: event.target.value });
   };
 
@@ -23,15 +24,17 @@ const TrainingDialogContent = ({
       setTraining({ ...training, customer: value._links.self.href });
     }
   };
+
   return (
     <>
       <DialogContent sx={{ width: "320px" }}>
         <Stack spacing={2} mt={1}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
+            <DateTimePicker
+              label="Training Date and Time"
               value={training.date}
-              onChange={(newValue) =>
-                setTraining({ ...training, date: newValue })
+              onChange={(newValue: Dayjs | null) =>
+                newValue && setTraining({ ...training, date: newValue })
               }
             />
           </LocalizationProvider>
